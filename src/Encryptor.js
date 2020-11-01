@@ -10,9 +10,10 @@ module.exports = async (key) => {
     }
     return Object.freeze({
         encrypt: (msg) => {
+            const nonce = nacl.randombytes_buf(nacl.crypto_secretbox_NONCEBYTES);
             return{
-                nonce: nacl.randombytes_buf(nacl.crypto_secretbox_NONCEBYTES),
                 ciphertext: nacl.crypto_secretbox_easy(msg, nonce, key),
+                nonce
             }
         }
     });
