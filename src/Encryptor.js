@@ -8,7 +8,7 @@ module.exports = async (key) => {
     if(!key){
         throw "no key";
     }
-    return ({
+    return Object.freeze({
         encrypt: (msg) => {
             return{
                 nonce: nacl.randombytes_buf(nacl.crypto_secretbox_NONCEBYTES),

@@ -4,7 +4,7 @@ const nacl = require('libsodium-wrappers');
 
 module.exports = async () => {
     await nacl.ready;
-    return({
+    return Object.freeze({
         verify: (hashedPassword, password) => {
             return nacl.crypto_pwhash_str_verify(hashedPassword, password);
         }

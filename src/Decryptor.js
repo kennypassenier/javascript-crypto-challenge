@@ -9,7 +9,7 @@ module.exports = async (key) => {
     if(!key){
         throw "no key";
     }
-    return ({
+    return Object.freeze({
         decrypt: (ciphertext, nonce) => nacl.crypto_secretbox_open_easy(ciphertext, nonce, key),
     })
 }
